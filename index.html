@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NoteToSelf</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href='http://fonts.googleapis.com/css?family=BenchNine:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/index.css">
+        <script src="js/NoteToSelf.js"></script>
+    </head>
+    <body>
+        <header class="title">
+            <h1>Note To Self</h1>
+            
+            <ul id="actions">
+                <li>
+                    <a href="#" id="addNote" class="button" title="Add a New Note" onclick="NoteToSelf.addNote();">
+                        Add Note
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="saveNotes" class="button" title="Save Notes to server-side database" onclick="NoteToSelf.saveDB();">
+                        Save Notes
+                    </a>
+                    <span id="saveInfo">Attempting to save to database...</span>
+                </li>
+                <li>
+                    <a href="#" id="loadNotes" class="button" title="Load notes from server-side database" onclick="NoteToSelf.loadDB();">
+                        Load Notes 
+                    </a>
+                    <span id="loadInfo">Attempting to load from database...</span>
+                </li>
+                <li>
+                    <a href="#" id="clearNotes" class="button" title="Clear all notes" onclick="NoteToSelf.clearNotes();">
+                        Clear All
+                    </a>
+                </li>
+            </ul>
+        </header>
+        
+        <section id="notesContainer"></section>
+        
+        <script>
+            NoteToSelf.initialize();
+        </script>
+    </body>
+</html>

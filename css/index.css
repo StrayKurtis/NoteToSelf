@@ -1,0 +1,257 @@
+/*
+ * Import basic reset
+ */
+@import "reset.css";
+
+/**
+ * Mobile-first design approach. Media queries for larger screens opposed to the other way around
+ */
+
+h1{ /* Google Webfont API */
+    font-family:'BenchNine', sans-serif; 
+    font-size:2em; 
+    line-height: 1.25em;
+    text-align: center;
+}
+
+.title{
+    background: #1D171F;
+    border-bottom: 1px solid #261E29;
+}
+
+/* Clear fix using pseudo-element */
+.title:after{
+    content: '';
+    clear: both;
+    display: block;
+}
+
+.note[draggable]
+{
+  
+}
+
+.note{
+    width: 97%;
+    margin: 1.5% 1.5% 1.5% 1.5%;
+    color: #1D171F;
+    padding:0.4em;
+    border-radius: 2px;
+    text-shadow: 1px 1px #c2ad9a;
+    text-shadow: 1px 1px rgba(255, 255, 255, 0.25);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+     box-sizing: border-box;
+     border: 1px solid rgba(0,0,0,0.25);
+     box-shadow: 2px 6px 2px -5px rgba(0,0,0,0.5);
+     min-height: 100px;
+     background: #B39C85;
+     position: relative;
+     
+     word-wrap: break-word;      /* IE 5.5-7 */
+     white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+     white-space: pre-wrap;      /* current browsers */
+     
+     -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+    opacity: 1;
+    /**
+     * Cross-browser CSS3 transitions
+     */
+    -webkit-transition: opacity .25s linear;
+    -moz-transition: opacity .25s linear;
+    -ms-transition: opacity .25s linear;
+    -o-transition: opacity .25s linear;
+    transition: opacity .25s linear;
+}
+/*
+.close{
+    position: absolute;
+    top: 0;
+    right: 0.35em;
+    color: #df6558;
+    color: rgba(255,0,0,0.5);
+    cursor: pointer;
+    font-weight: bolder;
+    font-family:cursive;
+
+    -webkit-transition: color .25s linear;
+    -moz-transition: color .25s linear;
+    -ms-transition: color .25s linear;
+    -o-transition: color .25s linear;
+    transition: color .25s linear;
+}
+
+.close:hover{
+    color: red;
+}
+*/
+.noteButtons{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0 2px 2px 0;
+}
+.noteButtons li{
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: url("../img/noteButtons.png");
+    float: left;
+}
+
+.noteButtons li:hover{
+    background-position-x: -28px;
+}
+
+.noteButtons .save{
+    background-position: -6px -6px;
+}
+
+.noteButtons .edit{
+    background-position: -6px -28px;
+}
+
+.noteButtons .close{
+    background-position: -6px -50px;
+}
+
+.noteButtons .disabled, .noteButtons .disabled:hover{
+    background-position-x: -50px;
+}
+
+.noteButtons .hover{
+    background-position-x: -28px;
+}
+
+.button{
+    font-size:1.3em;
+    color: #1D171F;
+    line-height:1.25em;
+    padding: 0.5em 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    display: block;
+    margin: .25em;
+    text-align: center;
+    border-radius: .15em;
+    white-space: nowrap;
+    position: relative;
+    box-shadow: none;
+    text-shadow: none;
+    /**
+     * Cross-browser gradients
+     */
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    -ms-transition: all .25s linear;
+    -o-transition: all .25s linear;
+    transition: all .25s linear;
+    /**
+     * Cross-browser gradients
+     */
+    background: #fcfff4;
+    background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fcfff4), color-stop(40%,#dfe5d7), color-stop(100%,#b3bead));
+    background: -webkit-linear-gradient(top, #fcfff4 0%,#dfe5d7 40%,#b3bead 100%); 
+    background: -o-linear-gradient(top, #fcfff4 0%,#dfe5d7 40%,#b3bead 100%);
+    background: -ms-linear-gradient(top, #fcfff4 0%,#dfe5d7 40%,#b3bead 100%);
+    background: linear-gradient(to bottom, #fcfff4 0%,#dfe5d7 40%,#b3bead 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+}
+
+.button:hover{
+    color: #000;
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.25);
+    text-shadow: 1px 1px rgba(255,255,255,0.5), -1px -1px rgba(0,0,0,0.25);
+}
+
+.small:hover{
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+#actions li{
+    float: left; 
+    width: 49.5%; 
+    position: relative; 
+    margin: 0.125% 0.25% 0 0.25%;
+}
+
+#saveInfo, #loadInfo{
+    position: absolute; 
+    background: white;
+    width:50%; 
+    left: 50%; 
+    margin: 1em 0 0 -28%;
+    z-index: 1;
+    color: #000;
+    top: -500%;
+    padding: 1em;
+    border-radius: 1em;
+    opacity: 0;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+}
+
+#saveInfo:before, #loadInfo:before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    top: -10px;
+    border-width: 0 10px 10px 10px;
+    border-style: none solid solid solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+#noteText{
+    width: 100%;
+    box-sizing: border-box; 
+    resize: none; 
+    min-height: 75px;
+    border-color: #6d6660;
+    border: 1px solid rgba(0,0,0,0.5);
+    background: #d7cdc1;
+    background: rgba(255,255,255,0.5);
+}
+
+.noteText:focus{
+    display: block;
+}
+
+.textButtons li{
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.textButtons a{
+    display: block;
+    margin:2px;
+    padding:2px;
+}
+
+.noteTpl{display: none;}
+
+/**
+ * Tablets & netbooks
+ */
+@media screen and (min-width: 768px){
+    .note{width: 49%; float: left; margin: 1% 0.5% 0 0.5%;}
+}
+
+/**
+ * Larger screens. Desktops/Laptops
+ */
+@media screen and (min-width: 1024px){
+    h1{font-size:4em; line-height: 1.5em;}
+    .note{width: 23.8%; float: left; margin: 1% 0 1% 1%;}
+    #actions li{float: left; width: 23.8%; margin: 1% 0 .5% 1%;}
+}
