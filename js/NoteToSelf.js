@@ -1,3 +1,4 @@
+/* Tell JSLint we are using a browser */
 /*global window: true, document: true, setTimeout: true, XMLHttpRequest: true, localStorage: true */
 /*global console: true, alert: true*/
 (function (window, document) {
@@ -137,12 +138,14 @@
                     txt = document.getElementById('noteText'),
                     save = noteNode.childNodes[1].childNodes[0],
                     edit = save.nextSibling,
+                    noteText,
                     newNote;
 
                 //Textarea empty?
                 if (txt.value !== '') {
-                    //Create JSON note object
-                    newNote = {title: '', date: (new Date()).getTime(), note: txt.value};
+                    //Create JSON note object and replace linebreaks with <BR>
+                    noteText = txt.value.replace(/\r\n|\r|\n/g, "<br>");
+                    newNote = {title: '', date: (new Date()).getTime(), note: noteText};
                     if (typeof store[noteId] !== 'undefined') {
                         //If this is an edit, change existing note
                         store[noteId] = newNote;
@@ -253,26 +256,33 @@
             //Save notes to database using AJAX
             saveDB: function () {
                 var request = new XMLHttpRequest(),
-                    saveDlg = document.getElementById('saveInfo');
-                request.open('POST', 'php/user.php');
-                request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                //Animate save dialog bubble in
-                saveDlg.style.top = '100%';
-                saveDlg.style.opacity = '1';
-                request.onreadystatechange = function () {
-                    if (request.readyState === 4) {
-                        //Display response message
-                        saveDlg.innerHTML = request.responseText;
+                    saveDlg = document.getElementById('saveInfo'),
+                    storage = this.storage();
 
-                        //Animate dialog out
-                        setTimeout(function () {
-                            saveDlg.style.top = '-500%';
-                            saveDlg.style.opacity = '0';
-                        }, 2500);
-                    }
-                };
-                //Send 'save' action along with our notes object
-                request.send('action=save&notes=' + JSON.stringify(this.storage()));
+                //Are there any notes to save?
+                if (storage.length >= 1) {
+                    request.open('POST', 'php/user.php');
+                    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    //Animate save dialog bubble in
+                    saveDlg.style.top = '100%';
+                    saveDlg.style.opacity = '1';
+                    request.onreadystatechange = function () {
+                        if (request.readyState === 4) {
+                            //Display response message
+                            saveDlg.innerHTML = request.responseText;
+
+                            //Animate dialog out
+                            setTimeout(function () {
+                                saveDlg.style.top = '-500%';
+                                saveDlg.style.opacity = '0';
+                            }, 2500);
+                        }
+                    };
+                    //Send 'save' action along with our notes object
+                    request.send('action=save&notes=' + JSON.stringify(this.storage()));
+                } else {
+                    alert('No notes to save!');
+                }
             }
         };
 

@@ -5,7 +5,7 @@
  * 
  * @author      Kurtis Key <Webmaster@KurtisDesigns.net>
  * @copyright   Copyright (c) 2013, Kurtis Key
- * @link        http://KurtisDesigns.ne
+ * @link        http://KurtisDesigns.net
  * @license     MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 class userNotes{
@@ -101,6 +101,8 @@ class userNotes{
     }
 }
 
+
+
 if($_POST)
 {
 /**
@@ -142,13 +144,13 @@ if(in_array($action,array('save','load')))
             }else
             {
                 //...otherwise, let them know thay have no saved notes!
-                print_r(json_encode(array('error'=>'Sorry, you don\'t seem to have any saved notes!')));
+                echo json_encode(array('error'=>'Sorry, you don\'t seem to have any saved notes!'));
             }
         }
         
     } catch(Exception $e) {
         //Catch exception and send error
-        print_r(json_encode(array('error'=>$e->getMessage())));
+        echo json_encode(array('error'=>$e->getMessage()));
     }
 }
 else
